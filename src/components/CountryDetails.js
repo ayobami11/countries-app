@@ -1,6 +1,6 @@
 import { useEffect, useContext, Children } from 'react';
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -147,7 +147,7 @@ const BorderCountries = styled.ul`
 const BorderCountry = styled.li`
     margin: 0.5em;
     margin-left: 0;
-    padding: 0.5em .75em;
+    padding: 0.5em 0.75em;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
     border-radius: 0.25em;
 
@@ -181,6 +181,14 @@ const Li = styled.li`
 
     &:not(:last-child)::after {
         content: ', ';
+    }
+`;
+
+const LinkSC = styled(Link)`
+    color: inherit;
+
+    :hover {
+        text-decoration: underline;
     }
 `;
 
@@ -339,16 +347,31 @@ const CountryDetails = () => {
                                                         country => {
                                                             return (
                                                                 <BorderCountry>
-                                                                    {
-                                                                        countries.find(
-                                                                            ({
-                                                                                cca3
-                                                                            }) =>
-                                                                                cca3 ===
-                                                                                country
-                                                                        ).name
-                                                                            .common
-                                                                    }
+                                                                    <LinkSC
+                                                                        to={`../${
+                                                                            countries.find(
+                                                                                ({
+                                                                                    cca3
+                                                                                }) =>
+                                                                                    cca3 ===
+                                                                                    country
+                                                                            )
+                                                                                .name
+                                                                                .common
+                                                                        }`}
+                                                                    >
+                                                                        {
+                                                                            countries.find(
+                                                                                ({
+                                                                                    cca3
+                                                                                }) =>
+                                                                                    cca3 ===
+                                                                                    country
+                                                                            )
+                                                                                .name
+                                                                                .common
+                                                                        }
+                                                                    </LinkSC>
                                                                 </BorderCountry>
                                                             );
                                                         }
