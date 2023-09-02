@@ -12,7 +12,7 @@ import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 import Header from './Header';
 import Main from './Main';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 import CountryList from './CountryList';
 import SearchInput from './SearchInput';
@@ -111,7 +111,7 @@ const Home = () => {
                     </>
                 )}
             </Main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };
